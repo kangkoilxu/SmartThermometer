@@ -1,5 +1,32 @@
 This project is developed using Tuya SDK, which enables you to quickly develop branded apps connecting and controlling smart scenarios of many devices.
 For more information, please check Tuya Developer Website.	
 
-## SmartThermometer
-Smart Thermometer based on TUYA cloud and TUYA module
+智能温湿度传感器项目
+ 
+功能介绍
+    - 基于涂鸦云模组的智能温湿度传感器，具有红外接收和遥控功能，可以和空调和加湿器联动。
+    - 配合涂鸦的自动化功能，当温度处于设定的范围时，可以通过板载的红外遥控开启空调，当湿度处于设定的范围时，可以开启由WIFI插座控制的加湿器。
+    - 板载3.5寸TFT LCD屏幕，可以实时显示当前温湿度，环境光强度
+    - 板载反射式光电传感器，可利用手势开启激活屏幕
+    - 新增了人体感应模块
+ 
+硬件方案
+    - 云模组采用是涂鸦WR3E，WIFI模组，具有红外发射和就收功能。
+    - 温湿度传感器采用的是DHT11，度湿度±5%RH， 温度±2℃，量程湿度5-95%RH， 温度-20~+60℃，无需矫正。
+    - 环境光传感器采用的是OPT3001，数字输出集成电路的环境光线传感器 ，I2C通信协议。
+    - 反射式光电传感器TCRT1000，实现手势开关功能。
+    - 红外接收管H638T，红外遥控信号接收。
+    - 主控采用esp32s，采用串口与涂鸦WR3E通信
+    - TFT LCD采用SPI方式驱动。
+ 
+软件方案
+  - 云服务，基于涂鸦智能
+  - 温湿度传感器和空调和加湿器联动，基于涂鸦智能自动化功能实现
+  - TFT LCD采用移植的LVGL图形库驱动。
+ 
+项目进度
+ - 数据DP上传功能OK，（能够上传温度，湿度，环境光强度）
+ - 红外发射和接收功能调试不通过（选用的模组是具有红外功能涂鸦模组WR3E,但是未调试通，涂鸦模块的红外发射管脚无反应）
+ - LCD显示功能未实现
+ - 加湿器联动功能OK，（通过涂鸦智能的自动化功能，判断当前湿度信息，低于设定值时，自动打开连接着加湿器的智能插座）
+ - 空调联通未调通，（涂鸦模块红外无反应）
